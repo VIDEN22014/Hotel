@@ -28,7 +28,7 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <a href="/room_order" class="nav-link text-white" aria-current="page">
+                <a href="room_order" class="nav-link text-white" aria-current="page">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
                     Замовлення Номеру
                 </a>
@@ -59,6 +59,13 @@
     </body>
 
 </main>
+
+<div th:each = "el : ${room_types}" class="alert alert-info mt-2">
+    <h3 th:text="${el}"/>
+    <a href="/room_order/add" class="nav-link text-danger">
+        Додати
+    </a>
+</div>
 
 </body>
 </html>

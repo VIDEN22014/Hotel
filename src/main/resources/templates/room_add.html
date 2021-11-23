@@ -53,10 +53,24 @@
             </li>
         </ul>
     </div>
-
-
-
     </body>
+
+    <div class="container mt-5 mb-5">
+        <h1>Додавання Номеру</h1>
+        <form action="/room_order/add" method="post">
+            <input th:type="text" name="room_number" placeholder="Введіть Номер кімнати" class="form-control"><br>
+            <input th:type="text" name="room_service" placeholder="Введіть Сервіс кімнати" class="form-control"><br>
+            <input th:type="text" name="room_type" placeholder="Введіть Тип кімнати" class="form-control"><br>
+            <button type="submit">Додати Номер</button>
+
+        </form>
+    </div>
+    <div th:each = "el : ${room_types}" class="alert alert-info mt-2">
+        <h3 th:text="${el}"/>
+        <a href="/room_order/add" class="nav-link text-danger">
+            Додати
+        </a>
+    </div>
 
 </main>
 
