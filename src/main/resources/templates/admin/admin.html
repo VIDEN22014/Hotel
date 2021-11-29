@@ -11,7 +11,7 @@
 </div>
 <style>
     body {
-        background-image: url(pic2.jpg);
+        background-image: url(templates/pic2.jpg);
 
     }
 </style>
@@ -28,7 +28,7 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <a href="room_order" class="nav-link text-white" aria-current="page">
+                <a href="/rooms" class="nav-link text-white" aria-current="page">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
                     Замовлення Номеру
                 </a>
@@ -53,19 +53,13 @@
             </li>
         </ul>
     </div>
-
-
-
     </body>
 
-</main>
+    <div class="container mt-5 mb-5">
+        <h1>Сторінка Адміністратора</h1>
+    </div>
 
-<div th:each = "el : ${room_types}" class="alert alert-info mt-2">
-    <h3 th:text="${el}"/>
-    <a href="/room_order/add" class="nav-link text-danger">
-        Додати
-    </a>
-</div>
+</main>
 
 </body>
 </html>

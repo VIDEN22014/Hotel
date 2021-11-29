@@ -6,18 +6,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 </head>
 <body>
-<div class="bg-image"
-     style="background-image: url('https://foto.hrsstatic.com/fotos/3/2/600/400/100/FFFFFF/http%3A%2F%2Ffoto-origin.hrsstatic.com%2Ffoto%2F4%2F3%2F0%2F8%2F430819%2F430819_z_24747903.jpg/CUuoi6TnCWE79J6om30rtQ%3D%3D/1024%2C682/6/Holiday_Inn_PATTAYA-Pattaya-Room-18-430819.jpg');
-            height: 100vh">
-
-
 <div class="container">
 
 </div>
+<style>
+    body {
+        background-image: url(templates/pic2.jpg);
 
-
-
-
+    }
+</style>
 <main>
 
     <body>
@@ -49,19 +46,33 @@
                 </a>
             </li>
             <li>
-                <a href="/admin_entry" class="nav-link text-white">
+                <a href="#" class="nav-link text-white">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
                     Адмін
                 </a>
             </li>
         </ul>
     </div>
-
-
-
     </body>
 
+    <div class="container mt-5 mb-5">
+        <h1>Додавання Номеру</h1>
+        <form action="/room_order/add/1" method="post">
+            <input th:type="text" name="room_number" placeholder="Введіть Номер кімнати" class="form-control"><br>
+            <input th:type="text" name="room_service" placeholder="Введіть Сервіс кімнати" class="form-control"><br>
+            <input th:type="text" name="room_type" placeholder="Введіть Тип кімнати" class="form-control"><br>
+            <button type="submit">Додати Номер</button>
+
+        </form>
+    </div>
+    <div th:each = "el : ${room_types}" class="alert alert-info mt-2">
+        <h3 th:text="${el}"/>
+        <a href="/room_order/add" class="nav-link text-danger">
+            Додати
+        </a>
+    </div>
+
 </main>
-</div>
+
 </body>
 </html>

@@ -10,7 +10,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RoomsRepository extends CrudRepository<Room, Long> {
-    @Query(value = "SELECT room_type FROM `room` WHERE is_free=1 GROUP BY room_type",nativeQuery = true)
+public interface RoomsRepository extends JpaRepository<Room, Long> {
+
+    @Query(value = "SELECT room_type FROM room WHERE is_free=1 GROUP BY room_type",nativeQuery = true)
     List<String> groupByRoomType();
+
+    @Query(value = "SELECT * FROM room WHERE is_free=1 AND room_type = ?1 LIMIT 1",nativeQuery = true)
+    List<Room> getFirstByRoomType(String room_type);
+
 }
