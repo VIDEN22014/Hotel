@@ -69,5 +69,10 @@ public class RoomController {
         model.addAttribute("room_number",room_number);
         return "rooms/room_order";
     }
+    @GetMapping("/room_service")
+    public String room_service(Model model) {
+        model.addAttribute("title","Про нас");
+        return "/rooms/room_service";
+    }
 
 }
