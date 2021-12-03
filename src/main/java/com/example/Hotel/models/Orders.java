@@ -12,12 +12,12 @@ public class Orders {
     private String client_name;
     private String client_surname;
     private String client_phone;
-    private int room_number;
-    private int room_service;
+    private String room_service;
+    private String room_number;
     private double order_amount;
 
     public Orders(){}
-    public Orders(String client_name, String client_surname, String client_phone, int room_number, int room_service, double order_amount) {
+    public Orders(String client_name, String client_surname, String client_phone, String room_number, String room_service, double order_amount) {
         this.client_name = client_name;
         this.client_surname = client_surname;
         this.client_phone = client_phone;
@@ -58,19 +58,19 @@ public class Orders {
         this.client_phone = client_phone;
     }
 
-    public int getRoom_number() {
+    public String getRoom_number() {
         return room_number;
     }
 
-    public void setRoom_number(int room_number) {
+    public void setRoom_number(String room_number) {
         this.room_number = room_number;
     }
 
-    public int getRoom_service() {
+    public String getRoom_service() {
         return room_service;
     }
 
-    public void setRoom_service(int room_service) {
+    public void setRoom_service(String room_service) {
         this.room_service = room_service;
     }
 

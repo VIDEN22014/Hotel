@@ -12,13 +12,13 @@ public class Room {
     private Long id;
 
 private String room_type;
-private int room_number;
+private String room_number;
 private double price_per_day;
 private boolean isFree=true;
 
 
     public Room(){};
-    public Room(String room_type, int room_number, double price_per_day) {
+    public Room(String room_type, String room_number, double price_per_day) {
         this.room_type = room_type;
         this.room_number = room_number;
         this.price_per_day = price_per_day;
@@ -40,11 +40,11 @@ private boolean isFree=true;
         this.room_type = room_type;
     }
 
-    public int getRoom_number() {
+    public String getRoom_number() {
         return room_number;
     }
 
-    public void setRoom_number(int room_number) {
+    public void setRoom_number(String room_number) {
         this.room_number = room_number;
     }
 
