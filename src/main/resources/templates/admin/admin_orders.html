@@ -12,7 +12,7 @@
 
 <main>
     <body>
-    <header th:insert="blocks/header::header">  </header>
+    <header th:insert="blocks/header::admin_header">  </header>
 
     <div th:each = "el : ${room_types}" class="alert alert-info mt-2">
         <h3 th:text="${el}"/>

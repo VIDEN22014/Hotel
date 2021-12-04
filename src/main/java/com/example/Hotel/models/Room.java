@@ -23,6 +23,13 @@ private boolean isFree=true;
         this.room_number = room_number;
         this.price_per_day = price_per_day;
     }
+    public Room(Long id,String room_type, String room_number,Boolean isFree, double price_per_day) {
+        this.id=id;
+        this.room_type = room_type;
+        this.room_number = room_number;
+        this.isFree=isFree;
+        this.price_per_day = price_per_day;
+    }
 
     public Long getId() {
         return id;
