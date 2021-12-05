@@ -41,15 +41,16 @@ public class RoomController {
     }
 
     @PostMapping("/rooms/room_order")
-    public String room_order(@RequestParam String room_type,@RequestParam String name,@RequestParam String surname,@RequestParam String phone_number,@RequestParam String service,Model model) {
+    public String room_order(@RequestParam String room_type,@RequestParam String name,@RequestParam String surname,
+                             @RequestParam String phone_number,@RequestParam String service,Model model) {
         model.addAttribute("title","Замовлення Номеру");
         model.addAttribute("room_type",room_type);
         List<Room> availableRoom=roomsRepository.getFirstByRoomType(room_type);
         if (availableRoom.isEmpty()){
             return "redirect:/rooms";
         }else {
-            Orders order=new Orders(name,surname,phone_number,availableRoom.get(0).getRoom_number(),
-                    service,availableRoom.get(0).getPrice_per_day());
+            Orders order=new Orders(name,surname,phone_number,service,availableRoom.get(0).getRoom_number(),room_type
+                    ,availableRoom.get(0).getPrice_per_day());
             ordersRepository.save(order);
 
             Optional<Room> room= roomsRepository.findById(availableRoom.get(0).getId());

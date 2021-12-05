@@ -4,6 +4,8 @@ import com.example.Hotel.models.Orders;
 import com.example.Hotel.models.Room;
 import com.example.Hotel.repo.OrdersRepository;
 import com.example.Hotel.repo.RoomsRepository;
+import org.aspectj.weaver.ast.Or;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -97,9 +99,46 @@ public class AdminController {
     }
 
     @GetMapping("/admin/orders")
-    public String adminOrders(Model model) {
+    public String adminOrders(@RequestParam(value="id",required=false)Long id,Model model) {
         model.addAttribute("title","Зміна Замовлень");
+        List<Orders> orders = ordersRepository.findAll();
+        model.addAttribute("orders",orders);
+        model.addAttribute("id",id);
+        //Update Actions
+        if (id!=null){
+            Optional<Orders> ordersUpdate = ordersRepository.findById(id);
+            model.addAttribute("orderUpdate",ordersUpdate.get());
+        }
         return "admin/admin_orders";
     }
+
+    @PostMapping("/admin/orders")
+    public String adminOrdersPost(@RequestParam(value="id",required=false)Long id,@RequestParam String operation,
+                                  @RequestParam String name,@RequestParam String surname,
+                                  @RequestParam String phone_number,@RequestParam String room_number,
+                                  @RequestParam String room_type,@RequestParam String service,@RequestParam Double order_amount,
+                                  Model model) {
+        model.addAttribute("title","Зміна Замовлень");
+        List<Orders> orders = ordersRepository.findAll();
+        model.addAttribute("orders",orders);
+        //Edit
+        if (operation.equals("edit")){
+            Orders order = new Orders(name,surname,phone_number,service,room_number,room_type,order_amount);
+            order.setId(id);
+            ordersRepository.save(order);
+            model.addAttribute("id",id);
+            model.addAttribute("orderUpdate",order);
+            return "admin/admin_orders";
+        }
+        return "redirect:/admin/orders";
+    }
+
+    @PostMapping("/admin/orders/delete")
+    public String adminOrdersDelete(@RequestParam Long id, Model model) {
+        model.addAttribute("title","Зміна Кімнат");
+        ordersRepository.deleteById(id);
+        return "redirect:/admin/orders";
+    }
+
 
 }
