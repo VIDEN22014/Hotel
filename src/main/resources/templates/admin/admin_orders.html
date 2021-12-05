@@ -32,16 +32,16 @@
             <input th:type="hidden" name="service" th:value="${orderUpdate.room_service}">
             <input th:type="hidden" name="order_amount" th:value="${orderUpdate.order_amount}">
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="name_edit" name="name" th:value="${orderUpdate.client_name}" placeholder="Введіть імя:" class="form-control"><br>
+                <input th:type="text" id="name_edit" name="name" th:value="${orderUpdate.client_name}" placeholder="Введіть імя:" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
                 <label for="name_edit">Введіть імя:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="surname_edit" name="surname" th:value="${orderUpdate.client_surname}" placeholder="Введіть прізвище:" class="form-control"><br>
+                <input th:type="text" id="surname_edit" name="surname" th:value="${orderUpdate.client_surname}" placeholder="Введіть прізвище:" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
                 <label for="surname_edit">Введіть прізвище:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="phone_edit" name="phone_number" th:value="${orderUpdate.client_phone}" placeholder="Введіть номер телефону:" class="form-control"><br>
-                <label for="phone_edit">Введіть номер телефону:</label>
+                <input th:type="text" id="phone_edit" name="phone_number" th:value="${orderUpdate.client_phone}" placeholder="Введіть номер телефону:" class="form-control" required pattern="[+]\\d{12}"><br>
+                <label for="phone_edit">Номер телефону в форматі +380XXXXXXXXX</label>
             </div>
             <button type="submit">Змінити Замовлення</button>
         </form>

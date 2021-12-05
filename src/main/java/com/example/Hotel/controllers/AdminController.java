@@ -68,7 +68,7 @@ public class AdminController {
     @PostMapping("/admin/rooms")
     public String adminRoomsPost(@RequestParam(value="id",required=false)Long id,@RequestParam String operation,
                                  @RequestParam String room_type,@RequestParam String room_number,@RequestParam(value="is_free",required=false)Boolean is_free,
-                                 @RequestParam double price_per_day,Model model) {
+                                 @RequestParam int price_per_day,Model model) {
         model.addAttribute("title","Зміна Кімнат");
         List<Room> rooms = roomsRepository.findAll();
         model.addAttribute("rooms",rooms);
@@ -116,7 +116,7 @@ public class AdminController {
     public String adminOrdersPost(@RequestParam(value="id",required=false)Long id,@RequestParam String operation,
                                   @RequestParam String name,@RequestParam String surname,
                                   @RequestParam String phone_number,@RequestParam String room_number,
-                                  @RequestParam String room_type,@RequestParam String service,@RequestParam Double order_amount,
+                                  @RequestParam String room_type,@RequestParam String service,@RequestParam int order_amount,
                                   Model model) {
         model.addAttribute("title","Зміна Замовлень");
         List<Orders> orders = ordersRepository.findAll();
