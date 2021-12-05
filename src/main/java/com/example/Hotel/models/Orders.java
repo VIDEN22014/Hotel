@@ -15,12 +15,12 @@ public class Orders {
     private String room_service;
     private String room_number;
     private String room_type;
-    private double order_amount;
+    private int order_amount;
 
     public Orders(){}
 
     public Orders(String client_name, String client_surname, String client_phone, String room_service,
-                  String room_number, String room_type, double order_amount) {
+                  String room_number, String room_type, int order_amount) {
         this.client_name = client_name;
         this.client_surname = client_surname;
         this.client_phone = client_phone;
@@ -86,11 +86,11 @@ public class Orders {
         this.room_type = room_type;
     }
 
-    public double getOrder_amount() {
+    public int getOrder_amount() {
         return order_amount;
     }
 
-    public void setOrder_amount(double order_amount) {
+    public void setOrder_amount(int order_amount) {
         this.order_amount = order_amount;
     }
 }

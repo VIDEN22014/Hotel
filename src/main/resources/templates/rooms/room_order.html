@@ -22,15 +22,15 @@
     <form action="/rooms/room_order" method="post">
       <input th:type="hidden" name="room_type" th:value="${room_type}">
       <div class="form-floating mb-3 mt-3">
-        <input th:type="text" id="name" name="name" placeholder="Введіть Імя" class="form-control"><br>
+        <input th:type="text" id="name" name="name" placeholder="Введіть Імя" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
         <label for="name">Імя</label>
       </div>
       <div class="form-floating mb-3 mt-3">
-        <input th:type="text" id="surname" name="surname" placeholder="Введіть Прізвище" class="form-control"><br>
+        <input th:type="text" id="surname" name="surname" placeholder="Введіть Прізвище" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
         <label for="surname">Прізвище</label>
       </div>
       <div class="form-floating mb-3 mt-3">
-        <input th:type="text" id="phone_number" name="phone_number" placeholder="Введіть Номер Телефону" class="form-control"><br>
+        <input th:type="text" id="phone_number" name="phone_number" placeholder="Введіть Номер Телефону" class="form-control" required pattern="[+]\\d{12}"><br>
         <label for="phone_number">Номер телефону в форматі +380XXXXXXXXX</label>
       </div>
       <div class="form-floating mb-3 mt-3">
