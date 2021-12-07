@@ -2,23 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${title}"/>
-    <link rel="stylesheet" type="text/css" href="../static/main.css" th:href="@{/main.css}" >
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/main.css" th:href="@{/main.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
 <main>
     <body>
-    <header th:insert="blocks/header::admin_header">  </header>
-    <h1>База Даних Номерів</h1>
+    <header th:insert="blocks/header::admin_header"></header>
+    <h1>База Даних Готелю</h1>
 
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEdit" aria-expanded="true" aria-controls="collapseEdit">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEdit"
+            aria-expanded="true" aria-controls="collapseEdit">
         Змінити Замовлення
     </button>
 
@@ -30,17 +38,22 @@
             <input th:type="hidden" name="room_number" th:value="${orderUpdate.room_number}">
             <input th:type="hidden" name="room_type" th:value="${orderUpdate.room_type}">
             <input th:type="hidden" name="service" th:value="${orderUpdate.room_service}">
+            <input th:type="hidden" name="number_of_people" th:value="${orderUpdate.number_of_people}">
             <input th:type="hidden" name="order_amount" th:value="${orderUpdate.order_amount}">
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="name_edit" name="name" th:value="${orderUpdate.client_name}" placeholder="Введіть імя:" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
+                <input th:type="text" id="name_edit" name="name" th:value="${orderUpdate.client_name}"
+                       placeholder="Введіть імя:" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
                 <label for="name_edit">Введіть імя:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="surname_edit" name="surname" th:value="${orderUpdate.client_surname}" placeholder="Введіть прізвище:" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
+                <input th:type="text" id="surname_edit" name="surname" th:value="${orderUpdate.client_surname}"
+                       placeholder="Введіть прізвище:" class="form-control" required
+                       pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
                 <label for="surname_edit">Введіть прізвище:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="phone_edit" name="phone_number" th:value="${orderUpdate.client_phone}" placeholder="Введіть номер телефону:" class="form-control" required pattern="[+]\\d{12}"><br>
+                <input th:type="text" id="phone_edit" name="phone_number" th:value="${orderUpdate.client_phone}"
+                       placeholder="Введіть номер телефону:" class="form-control" required pattern="[+]\d{12}"><br>
                 <label for="phone_edit">Номер телефону в форматі +380XXXXXXXXX</label>
             </div>
             <button type="submit">Змінити Замовлення</button>
@@ -59,12 +72,15 @@
             <th scope="col">room_type</th>
             <th scope="col">room_number</th>
             <th scope="col">room_service</th>
+            <th scope="col">number_of_people</th>
             <th scope="col">amount</th>
+            <th scope="col">check_in_date</th>
+            <th scope="col">check_out_date</th>
             <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
-        <div th:each = "el : ${orders}">
+        <div th:each="el : ${orders}">
             <tr class="table-light">
                 <th scope="row" th:text="${el.id}"></th>
                 <td th:text="${el.client_name}"></td>
@@ -73,7 +89,10 @@
                 <td th:text="${el.room_type}"></td>
                 <td th:text="${el.room_number}"></td>
                 <td th:text="${el.room_service}"></td>
+                <td th:text="${el.number_of_people}"></td>
                 <td th:text="${el.order_amount}"></td>
+                <td th:text="${el.check_in_date}"></td>
+                <td th:text="${el.check_out_date}"></td>
                 <td>
                     <form action="/admin/orders" method="get">
                         <input th:type="hidden" name="action" value="edit">
@@ -93,7 +112,6 @@
 
     </body>
 </main>
-
 
 
 </body>

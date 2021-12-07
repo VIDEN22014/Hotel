@@ -12,10 +12,16 @@ import java.util.List;
 @Repository
 public interface RoomsRepository extends JpaRepository<Room, Long> {
 
-    @Query(value = "SELECT room_type FROM room WHERE is_free=1 GROUP BY room_type",nativeQuery = true)
+    @Query(value = "SELECT room_type FROM room GROUP BY room_type",nativeQuery = true)
     List<String> groupByRoomType();
 
-    @Query(value = "SELECT * FROM room WHERE is_free=1 AND room_type = ?1 LIMIT 1",nativeQuery = true)
-    List<Room> getFirstByRoomType(String room_type);
+    @Query(value = "SELECT room_number FROM room WHERE room_type = ?1",nativeQuery = true)
+    List<String> getRoomNumbersByRoomType(String room_type);
 
+
+    @Query(value = "SELECT * FROM room WHERE room_number = ?1",nativeQuery = true)
+    Room getRoomByRoomNumber(int room_number);
+
+    @Query(value = "SELECT count(id) FROM room WHERE room_number = ?1",nativeQuery = true)
+    int getCountByRoomNumber(int room_number);
 }
