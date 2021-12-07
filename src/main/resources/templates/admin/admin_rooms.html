@@ -2,25 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${title}"/>
-    <link rel="stylesheet" type="text/css" href="../static/main.css" th:href="@{/main.css}" >
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/main.css" th:href="@{/main.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
 <main>
     <body>
-    <header th:insert="blocks/header::admin_header">  </header>
-    <h1>База Даних Номерів</h1>
+    <header th:insert="blocks/header::admin_header"></header>
+    <h1>База Даних Готелю</h1>
     <div class="alert alert-danger" role="alert" th:if="${isRoomNumberExists==true}">
         Кімната за таким номером вже існує
     </div>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCreate" aria-expanded="false" aria-controls="collapseCreate">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCreate"
+            aria-expanded="false" aria-controls="collapseCreate">
         Додати Номер
     </button>
     <div class="collapse" id="collapseCreate">
@@ -28,22 +36,31 @@
         <form action="/admin/rooms" method="post">
             <input th:type="hidden" name="operation" value="create">
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="room_type" name="room_type" th:value="${room_create_room_type}" placeholder="Введіть тип кімнати:" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
-                <label for="room_type">Введіть тип кімнати:</label>
+                <select class="form-select" id="room_type" name="room_type">
+                    <option value="Стандарт">Стандарт</option>
+                    <option value="Напівлюкс">Напівлюкс</option>
+                    <option value="Люкс">Люкс</option>
+                    <option value="Делюкс">Делюкс</option>
+                </select>
+                <label for="room_type" class="form-label">Введіть тип кімнати:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="number" id="room_number" name="room_number" th:value="${room_create_room_number}" placeholder="Введіть номер кімнати:" class="form-control" required pattern="\d+"><br>
+                <input th:type="number" id="room_number" name="room_number" th:value="${room_create_room_number}"
+                       placeholder="Введіть номер кімнати:" class="form-control" required pattern="\d+"><br>
                 <label for="room_number">Введіть номер кімнати:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="number" id="price_per_day" name="price_per_day" th:value="${room_create_price_per_day}" placeholder="Введіть ціну за день:" class="form-control" required pattern="\d+"><br>
+                <input th:type="number" id="price_per_day" name="price_per_day" th:value="${room_create_price_per_day}"
+                       placeholder="Введіть ціну за день:" class="form-control" required pattern="\d+"><br>
                 <label for="price_per_day">Введіть ціну за день:</label>
             </div>
             <button type="submit">Додати Номер</button>
-        </form><br>
+        </form>
+        <br>
     </div>
 
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEdit" aria-expanded="true" aria-controls="collapseEdit">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEdit"
+            aria-expanded="true" aria-controls="collapseEdit">
         Змінити Номер
     </button>
 
@@ -53,19 +70,24 @@
             <input th:type="hidden" name="operation" value="edit">
             <input th:type="hidden" name="id" th:value="${id}">
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="room_type_edit" name="room_type" th:value="${room_update.getRoom_type()}" placeholder="Введіть тип кімнати:" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
-                <label for="room_type_edit">Введіть тип кімнати:</label>
+                <select class="form-select" id="room_type_edit" name="room_type">
+                    <option value="Стандарт">Стандарт</option>
+                    <option value="Напівлюкс">Напівлюкс</option>
+                    <option value="Люкс">Люкс</option>
+                    <option value="Делюкс">Делюкс</option>
+                </select>
+                <label for="room_type_edit" class="form-label">Введіть тип кімнати:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="number" id="room_number_edit" name="room_number" th:value="${room_update.getRoom_number()}" placeholder="Введіть номер кімнати:" class="form-control" required pattern="\d+"><br>
+                <input th:type="number" id="room_number_edit" name="room_number"
+                       th:value="${room_update.getRoom_number()}" placeholder="Введіть номер кімнати:"
+                       class="form-control" required pattern="\d+"><br>
                 <label for="room_number_edit">Введіть номер кімнати:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="is_free_edit" name="is_free" th:value="${room_update.isFree()}" placeholder="Чи Номер Вільний:" class="form-control" required pattern="(false)|(true)"><br>
-                <label for="is_free_edit">Чи Номер Вільний:</label>
-            </div>
-            <div class="form-floating mb-3 mt-3">
-                <input th:type="number" id="price_per_day_edit" name="price_per_day" th:value="${room_update.getPrice_per_day()}" placeholder="Введіть ціну за день:" class="form-control" required pattern="\d+"><br>
+                <input th:type="number" id="price_per_day_edit" name="price_per_day"
+                       th:value="${room_update.getPrice_per_day()}" placeholder="Введіть ціну за день:"
+                       class="form-control" required pattern="\d+"><br>
                 <label for="price_per_day_edit">Введіть ціну за день:</label>
             </div>
             <button type="submit">Змінити Номер</button>
@@ -80,18 +102,16 @@
             <th scope="col">#</th>
             <th scope="col">room_type</th>
             <th scope="col">room_number</th>
-            <th scope="col">is_free</th>
             <th scope="col">price_per_day</th>
             <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
-        <div th:each = "el : ${rooms}">
+        <div th:each="el : ${rooms}">
             <tr class="table-light">
                 <th scope="row" th:text="${el.id}"></th>
                 <td th:text="${el.room_type}"></td>
                 <td th:text="${el.room_number}"></td>
-                <td th:text="${el.free}"></td>
                 <td th:text="${el.price_per_day}"></td>
                 <td>
                     <form action="/admin/rooms" method="get">
@@ -112,7 +132,6 @@
 
     </body>
 </main>
-
 
 
 </body>
