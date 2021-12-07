@@ -40,7 +40,7 @@
                 <label for="surname_edit">Введіть прізвище:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="phone_edit" name="phone_number" th:value="${orderUpdate.client_phone}" placeholder="Введіть номер телефону:" class="form-control" required pattern="[+]\\d{12}"><br>
+                <input th:type="text" id="phone_edit" name="phone_number" th:value="${orderUpdate.client_phone}" placeholder="Введіть номер телефону:" class="form-control" required pattern="[+]\d{12}"><br>
                 <label for="phone_edit">Номер телефону в форматі +380XXXXXXXXX</label>
             </div>
             <button type="submit">Змінити Замовлення</button>

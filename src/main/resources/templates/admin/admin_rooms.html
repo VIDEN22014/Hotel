@@ -17,6 +17,9 @@
     <body>
     <header th:insert="blocks/header::admin_header">  </header>
     <h1>База Даних Номерів</h1>
+    <div class="alert alert-danger" role="alert" th:if="${isRoomNumberExists==true}">
+        Кімната за таким номером вже існує
+    </div>
     <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCreate" aria-expanded="false" aria-controls="collapseCreate">
         Додати Номер
     </button>
@@ -25,15 +28,15 @@
         <form action="/admin/rooms" method="post">
             <input th:type="hidden" name="operation" value="create">
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="room_type" name="room_type" placeholder="Введіть тип кімнати:" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
+                <input th:type="text" id="room_type" name="room_type" th:value="${room_create_room_type}" placeholder="Введіть тип кімнати:" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
                 <label for="room_type">Введіть тип кімнати:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="room_number" name="room_number" placeholder="Введіть номер кімнати:" class="form-control" required pattern="\d+"><br>
+                <input th:type="number" id="room_number" name="room_number" th:value="${room_create_room_number}" placeholder="Введіть номер кімнати:" class="form-control" required pattern="\d+"><br>
                 <label for="room_number">Введіть номер кімнати:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="number" id="price_per_day" name="price_per_day" placeholder="Введіть ціну за день:" class="form-control" required pattern="\d+"><br>
+                <input th:type="number" id="price_per_day" name="price_per_day" th:value="${room_create_price_per_day}" placeholder="Введіть ціну за день:" class="form-control" required pattern="\d+"><br>
                 <label for="price_per_day">Введіть ціну за день:</label>
             </div>
             <button type="submit">Додати Номер</button>
@@ -50,19 +53,19 @@
             <input th:type="hidden" name="operation" value="edit">
             <input th:type="hidden" name="id" th:value="${id}">
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="room_type_edit" name="room_type" th:value="${room_type_update}" placeholder="Введіть тип кімнати:" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
+                <input th:type="text" id="room_type_edit" name="room_type" th:value="${room_update.getRoom_type()}" placeholder="Введіть тип кімнати:" class="form-control" required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
                 <label for="room_type_edit">Введіть тип кімнати:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="room_number_edit" name="room_number" th:value="${room_number_update}" placeholder="Введіть номер кімнати:" class="form-control" required pattern="\d+"><br>
+                <input th:type="number" id="room_number_edit" name="room_number" th:value="${room_update.getRoom_number()}" placeholder="Введіть номер кімнати:" class="form-control" required pattern="\d+"><br>
                 <label for="room_number_edit">Введіть номер кімнати:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="is_free_edit" name="is_free" th:value="${is_free_update}" placeholder="Чи Номер Вільний:" class="form-control" required pattern="(false)|(true)"><br>
+                <input th:type="text" id="is_free_edit" name="is_free" th:value="${room_update.isFree()}" placeholder="Чи Номер Вільний:" class="form-control" required pattern="(false)|(true)"><br>
                 <label for="is_free_edit">Чи Номер Вільний:</label>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input th:type="number" id="price_per_day_edit" name="price_per_day" th:value="${price_per_day_update}" placeholder="Введіть ціну за день:" class="form-control" required pattern="\d+"><br>
+                <input th:type="number" id="price_per_day_edit" name="price_per_day" th:value="${room_update.getPrice_per_day()}" placeholder="Введіть ціну за день:" class="form-control" required pattern="\d+"><br>
                 <label for="price_per_day_edit">Введіть ціну за день:</label>
             </div>
             <button type="submit">Змінити Номер</button>
