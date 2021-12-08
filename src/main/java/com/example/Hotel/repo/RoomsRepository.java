@@ -24,4 +24,8 @@ public interface RoomsRepository extends JpaRepository<Room, Long> {
 
     @Query(value = "SELECT count(id) FROM room WHERE room_number = ?1",nativeQuery = true)
     int getCountByRoomNumber(int room_number);
+
+
+    @Query(value = "SELECT COUNT(id) FROM room WHERE room_type = ?1",nativeQuery = true)
+    int getCountByRoomType(String room_type);
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,19 @@ public class RoomController {
     public String room_order(@RequestParam String room_type, Model model) {
         model.addAttribute("title", "Замовлення Номеру");
         model.addAttribute("room_type", room_type);
+        //DatesDisabled Check
+        List<String> datesDisabledList = new ArrayList<>();
+        LocalDate today = LocalDate.now();
+        LocalDate maxCheckOut = ordersRepository.getMaxCheckOutDateByRoomType(room_type);
+        for (LocalDate i = today; i.compareTo(maxCheckOut) <= 0; i = i.plusDays(1)) {
+            if (roomsRepository.getCountByRoomType(room_type)==ordersRepository.getCountByRoomTypeAndDate(room_type,i)){
+                datesDisabledList.add(i.toString());
+                System.out.println(i.toString());
+            }
+        }
+        String[] datesDisabledArray = datesDisabledList.toArray(new String[0]);
+        model.addAttribute("datesDisabled", datesDisabledArray);
+
         return "rooms/room_order";
     }
 
@@ -68,6 +82,18 @@ public class RoomController {
 
 
         if (isRoomAvailable.equals("NotAvailable")) {
+            //DatesDisabled Check
+            List<String> datesDisabledList = new ArrayList<>();
+            LocalDate today = LocalDate.now();
+            LocalDate maxCheckOut = ordersRepository.getMaxCheckOutDateByRoomType(room_type);
+            for (LocalDate i = today; i.compareTo(maxCheckOut) <= 0; i = i.plusDays(1)) {
+                if (roomsRepository.getCountByRoomType(room_type)==ordersRepository.getCountByRoomTypeAndDate(room_type,i)){
+                    datesDisabledList.add(i.toString());
+                    System.out.println(i.toString());
+                }
+            }
+            String[] datesDisabledArray = datesDisabledList.toArray(new String[0]);
+            model.addAttribute("datesDisabled", datesDisabledArray);
             model.addAttribute("room_type", room_type);
             model.addAttribute("name", name);
             model.addAttribute("surname", surname);
