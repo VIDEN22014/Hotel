@@ -23,7 +23,7 @@
     </button>
 
     <div class="collapse show" id="collapseEdit" th:if="${id!=null}">
-        <h1>Змінити Замовлення</h1>
+        <h2>Змінити Замовлення</h2>
         <form action="/admin/orders" method="post">
             <input th:type="hidden" name="operation" value="edit">
             <input th:type="hidden" name="id" th:value="${id}">
@@ -43,12 +43,12 @@
                 <input th:type="text" id="phone_edit" name="phone_number" th:value="${orderUpdate.client_phone}" placeholder="Введіть номер телефону:" class="form-control" required pattern="[+]\d{12}"><br>
                 <label for="phone_edit">Номер телефону в форматі +380XXXXXXXXX</label>
             </div>
-            <button type="submit">Змінити Замовлення</button>
+            <button type="submit" class="btn btn-secondary">Змінити</button>
         </form>
     </div>
 
 
-    <h1>Список Замовлень</h1>
+    <h2>Список Замовлень</h2>
     <table class="table table-dark table-hover">
         <thead>
         <tr>
@@ -78,11 +78,11 @@
                     <form action="/admin/orders" method="get">
                         <input th:type="hidden" name="action" value="edit">
                         <input th:type="hidden" name="id" th:value="${el.id}">
-                        <button type="submit">Змінити</button>
+                        <button type="submit" class="btn btn-dark">Змінити</button>
                     </form>
                     <form action="/admin/orders/delete" method="post">
                         <input th:type="hidden" name="id" th:value="${el.id}">
-                        <button type="submit">Видалити</button>
+                        <button type="submit" class="btn btn-dark">Видалити</button>
                     </form>
                 </td>
             </tr>

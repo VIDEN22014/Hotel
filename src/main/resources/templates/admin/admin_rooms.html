@@ -39,7 +39,7 @@
                 <input th:type="number" id="price_per_day" name="price_per_day" th:value="${room_create_price_per_day}" placeholder="Введіть ціну за день:" class="form-control" required pattern="\d+"><br>
                 <label for="price_per_day">Введіть ціну за день:</label>
             </div>
-            <button type="submit">Додати Номер</button>
+            <button type="submit" class="btn btn-secondary">Додати Номер</button>
         </form><br>
     </div>
 
@@ -68,12 +68,12 @@
                 <input th:type="number" id="price_per_day_edit" name="price_per_day" th:value="${room_update.getPrice_per_day()}" placeholder="Введіть ціну за день:" class="form-control" required pattern="\d+"><br>
                 <label for="price_per_day_edit">Введіть ціну за день:</label>
             </div>
-            <button type="submit">Змінити Номер</button>
+            <button type="submit" class="btn btn-secondary">Змінити</button>
         </form>
     </div>
 
 
-    <h1>Список Номерів</h1>
+    <h2>Список Номерів</h2>
     <table class="table table-dark table-hover">
         <thead>
         <tr>
@@ -97,11 +97,11 @@
                     <form action="/admin/rooms" method="get">
                         <input th:type="hidden" name="action" value="edit">
                         <input th:type="hidden" name="id" th:value="${el.id}">
-                        <button type="submit">Змінити</button>
+                        <button type="submit" class="btn btn-dark">Змінити</button>
                     </form>
                     <form action="/admin/rooms/delete" method="post">
                         <input th:type="hidden" name="id" th:value="${el.id}">
-                        <button type="submit">Видалити</button>
+                        <button type="submit" class="btn btn-dark">Видалити</button>
                     </form>
                 </td>
             </tr>
