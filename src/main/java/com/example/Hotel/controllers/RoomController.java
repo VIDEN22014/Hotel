@@ -81,7 +81,7 @@ public class RoomController {
         System.out.println(isRoomAvailable);
 
 
-        if (isRoomAvailable.equals("NotAvailable")) {
+        if (isRoomAvailable.equals("NotAvailable")||checkIn.compareTo(checkOut)>0) {
             //DatesDisabled Check
             List<String> datesDisabledList = new ArrayList<>();
             LocalDate today = LocalDate.now();
@@ -102,7 +102,13 @@ public class RoomController {
             model.addAttribute("service", service);
             model.addAttribute("datepicker1", datepicker1);
             model.addAttribute("datepicker2", datepicker2);
-            model.addAttribute("isRoomAvailable", false);
+            if (isRoomAvailable.equals("NotAvailable")){
+                model.addAttribute("isRoomAvailable", false);
+            }
+            else if (checkIn.compareTo(checkOut)>0){
+                model.addAttribute("isDatepickerWrong", true);
+            }
+
             return "rooms/room_order";
         } else {
             Room availableRoom = roomsRepository.getRoomByRoomNumber(Integer.parseInt(isRoomAvailable));
