@@ -25,4 +25,8 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
 
 
 
+    @Query(value = "SELECT COUNT(id) from orders where room_number = ?1 and ?2 BETWEEN check_in_date and check_out_date",nativeQuery = true)
+    int getCountByRoomNumberAndDate(String room_number, LocalDate localDate);
+
+
 }

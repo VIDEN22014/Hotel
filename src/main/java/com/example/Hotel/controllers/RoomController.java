@@ -94,6 +94,8 @@ public class RoomController {
             }
             String[] datesDisabledArray = datesDisabledList.toArray(new String[0]);
             model.addAttribute("datesDisabled", datesDisabledArray);
+
+        if (isRoomAvailable.equals("NotAvailable")) {
             model.addAttribute("room_type", room_type);
             model.addAttribute("name", name);
             model.addAttribute("surname", surname);
@@ -102,13 +104,14 @@ public class RoomController {
             model.addAttribute("service", service);
             model.addAttribute("datepicker1", datepicker1);
             model.addAttribute("datepicker2", datepicker2);
+
             if (isRoomAvailable.equals("NotAvailable")){
                 model.addAttribute("isRoomAvailable", false);
             }
             else if (checkIn.compareTo(checkOut)>0){
                 model.addAttribute("isDatepickerWrong", true);
             }
-
+            model.addAttribute("isRoomAvailable", false);
             return "rooms/room_order";
         } else {
             Room availableRoom = roomsRepository.getRoomByRoomNumber(Integer.parseInt(isRoomAvailable));
