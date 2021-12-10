@@ -42,10 +42,12 @@ public class RoomController {
         List<String> datesDisabledList = new ArrayList<>();
         LocalDate today = LocalDate.now();
         LocalDate maxCheckOut = ordersRepository.getMaxCheckOutDateByRoomType(room_type);
-        for (LocalDate i = today; i.compareTo(maxCheckOut) <= 0; i = i.plusDays(1)) {
-            if (roomsRepository.getCountByRoomType(room_type)==ordersRepository.getCountByRoomTypeAndDate(room_type,i)){
-                datesDisabledList.add(i.toString());
-                System.out.println(i.toString());
+        if (maxCheckOut!=null){
+            for (LocalDate i = today; i.compareTo(maxCheckOut) <= 0; i = i.plusDays(1)) {
+                if (roomsRepository.getCountByRoomType(room_type)==ordersRepository.getCountByRoomTypeAndDate(room_type,i)){
+                    datesDisabledList.add(i.toString());
+                    System.out.println(i.toString());
+                }
             }
         }
         String[] datesDisabledArray = datesDisabledList.toArray(new String[0]);
