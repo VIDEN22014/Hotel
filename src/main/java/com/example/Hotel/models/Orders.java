@@ -2,6 +2,7 @@ package com.example.Hotel.models;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Orders {
@@ -15,19 +16,28 @@ public class Orders {
     private String room_service;
     private int room_number;
     private String room_type;
+    private int number_of_people;
     private int order_amount;
 
-    public Orders(){}
+    private LocalDate check_in_date;
+    private LocalDate check_out_date;
+
+
+    public Orders() {
+    }
 
     public Orders(String client_name, String client_surname, String client_phone, String room_service,
-                  int room_number, String room_type, int order_amount) {
+                  int room_number, String room_type,int number_of_people, int order_amount,LocalDate check_in_date,LocalDate check_out_date) {
         this.client_name = client_name;
         this.client_surname = client_surname;
         this.client_phone = client_phone;
         this.room_service = room_service;
         this.room_number = room_number;
         this.room_type = room_type;
+        this.number_of_people = number_of_people;
         this.order_amount = order_amount;
+        this.check_in_date = check_in_date;
+        this.check_out_date = check_out_date;
     }
 
     public Long getId() {
@@ -86,11 +96,35 @@ public class Orders {
         this.room_type = room_type;
     }
 
+    public int getNumber_of_people() {
+        return number_of_people;
+    }
+
+    public void setNumber_of_people(int number_of_people) {
+        this.number_of_people = number_of_people;
+    }
+
     public int getOrder_amount() {
         return order_amount;
     }
 
     public void setOrder_amount(int order_amount) {
         this.order_amount = order_amount;
+    }
+
+    public LocalDate getCheck_in_date() {
+        return check_in_date;
+    }
+
+    public void setCheck_in_date(LocalDate check_in_date) {
+        this.check_in_date = check_in_date;
+    }
+
+    public LocalDate getCheck_out_date() {
+        return check_out_date;
+    }
+
+    public void setCheck_out_date(LocalDate check_out_date) {
+        this.check_out_date = check_out_date;
     }
 }

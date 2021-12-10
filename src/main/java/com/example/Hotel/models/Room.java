@@ -14,7 +14,6 @@ public class Room {
 private String room_type;
 private int room_number;
 private int price_per_day;
-private boolean isFree=true;
 
 
     public Room(){};
@@ -23,11 +22,10 @@ private boolean isFree=true;
         this.room_number = room_number;
         this.price_per_day = price_per_day;
     }
-    public Room(Long id,String room_type, int room_number,Boolean isFree, int price_per_day) {
+    public Room(Long id,String room_type, int room_number, int price_per_day) {
         this.id=id;
         this.room_type = room_type;
         this.room_number = room_number;
-        this.isFree=isFree;
         this.price_per_day = price_per_day;
     }
 
@@ -63,11 +61,4 @@ private boolean isFree=true;
         this.price_per_day = price_per_day;
     }
 
-    public boolean isFree() {
-        return isFree;
-    }
-
-    public void setFree(boolean free) {
-        isFree = free;
-    }
 }

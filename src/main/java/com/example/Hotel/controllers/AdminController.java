@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,7 +72,7 @@ public class AdminController {
 
         //Edit
         if (operation.equals("edit")) {
-            Room room = new Room(id, room_type, room_number, is_free, price_per_day);
+            Room room = new Room(id, room_type, room_number, price_per_day);
             Optional<Room> roomUpdate = roomsRepository.findById(id);
             model.addAttribute("id", id);
             model.addAttribute("room_update", roomUpdate.get());
@@ -81,7 +82,7 @@ public class AdminController {
                 roomsRepository.save(room);
                 model.addAttribute("isRoomNumberExists", false);
             }
-         } else if (operation.equals("create")) {
+        } else if (operation.equals("create")) {
             Room room = new Room(room_type, room_number, price_per_day);
             if (roomsRepository.getCountByRoomNumber(room_number) > 0) {
                 model.addAttribute("isRoomNumberExists", true);
@@ -91,6 +92,7 @@ public class AdminController {
             } else {
                 roomsRepository.save(room);
                 model.addAttribute("isRoomNumberExists", false);
+                return "redirect:/admin/rooms";
             }
         }
         return "admin/admin_rooms";
@@ -121,14 +123,14 @@ public class AdminController {
     public String adminOrdersPost(@RequestParam(value = "id", required = false) Long id, @RequestParam String operation,
                                   @RequestParam String name, @RequestParam String surname,
                                   @RequestParam String phone_number, @RequestParam int room_number,
-                                  @RequestParam String room_type, @RequestParam String service, @RequestParam int order_amount,
-                                  Model model) {
+                                  @RequestParam String room_type, @RequestParam String service, @RequestParam int number_of_people,
+                                  @RequestParam int order_amount, Model model) {
         model.addAttribute("title", "Зміна Замовлень");
         List<Orders> orders = ordersRepository.findAll();
         model.addAttribute("orders", orders);
         //Edit
         if (operation.equals("edit")) {
-            Orders order = new Orders(name, surname, phone_number, service, room_number, room_type, order_amount);
+            Orders order = new Orders(name, surname, phone_number, service, room_number, room_type, number_of_people, order_amount, LocalDate.now(), LocalDate.now());
             order.setId(id);
             ordersRepository.save(order);
             model.addAttribute("id", id);
