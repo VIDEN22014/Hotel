@@ -30,34 +30,29 @@
 
 </div>
 <main>
-
-
-    <div class="container mt-5 mb-5">
-        <h1 th:text="${room_type}"></h1>
-        <div class="alert alert-danger" role="alert" th:if="${isRoomAvailable==false}">
+  <div class="container mt-5 mb-5">
+    <h1 th:text="${room_type}"></h1>
+    <div class="alert alert-danger" role="alert" th:if="${isRoomAvailable==false}">
             <sp th:text="|На заданий проміжок часу всі номери ${room_type} зайняті|"></sp>
-        </div>
-        <form action="/rooms/room_order" method="post">
-            <input th:type="hidden" name="room_type" th:value="${room_type}">
-            <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="name" name="name" th:value="${name}" placeholder="Введіть Імя"
-                       class="form-control" required
-                       pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
-                <label for="name">Імя</label>
-            </div>
-            <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="surname" name="surname" th:value="${surname}" placeholder="Введіть Прізвище"
-                       class="form-control"
-                       required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
-                <label for="surname">Прізвище</label>
-            </div>
-            <div class="form-floating mb-3 mt-3">
-                <input th:type="text" id="phone_number" name="phone_number" th:value="${phone_number}"
-                       placeholder="Введіть Номер Телефону"
-                       class="form-control" required pattern="[+]\d{12}"><br>
-                <label for="phone_number">Номер телефону в форматі +380XXXXXXXXX</label>
-            </div>
-            <div class="form-floating mb-3 mt-3">
+    </div>
+    <form action="/rooms/room_order" method="post">
+      <input th:type="hidden" name="room_type" th:value="${room_type}">
+      <div class="form-floating mb-3 mt-3">
+        <input th:type="text" id="name" name="name" th:value="${name}" placeholder="Введіть Імя" class="form-control" 
+               required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
+        <label for="name">Імя</label>
+      </div>
+      <div class="form-floating mb-3 mt-3">
+        <input th:type="text" id="surname" name="surname" th:value="${surname}" placeholder="Введіть Прізвище" class="form-control" 
+               required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
+        <label for="surname">Прізвище</label>
+      </div>
+      <div class="form-floating mb-3 mt-3">
+        <input th:type="text" id="phone_number" name="phone_number" th:value="${phone_number}" placeholder="Введіть Номер Телефону" class="form-control" 
+               required pattern="[+]\d{12}"><br>
+        <label for="phone_number">Номер телефону в форматі +380XXXXXXXXX</label>
+      </div>
+      <div class="form-floating mb-3 mt-3">
                 <input th:type="number" id="number_of_people" name="number_of_people" th:value="${number_of_people}"
                        placeholder="Кількість людей від 1 до 3"
                        class="form-control" required min="1" max="3"><br>
@@ -66,7 +61,6 @@
             <div class="alert alert-danger" role="alert" th:if="${isDatepickerWrong}">
                 Заданий Проміжок Дат Невірний
             </div>
-            <label for="datepicker1">Дата Заселення:</label>
             <div class="col-sm-4">
                 <div class="input-group date" id="datepicker1">
                     <input autocomplete="off" type="text" name="datepicker1" th:value="${datepicker1}"
@@ -96,9 +90,6 @@
                     });
                 });
             </script>
-
-
-            <label for="datepicker2">Дата Виселення:</label>
             <div class="col-sm-4">
                 <div class="input-group date" id="datepicker2">
                     <input autocomplete="off" type="text" name="datepicker2" th:value="${datepicker2}"
@@ -129,18 +120,17 @@
                     });
                 });
             </script>
-
-            <div class="form-floating mb-3 mt-3">
-                <select class="form-select" id="service" name="service" th:value="${service}">
-                    <option>Без Прибирання</option>
-                    <option>Легке Прибирання</option>
-                    <option>Генеральне Прибирання</option>
-                </select>
-                <label for="service" class="form-label">Виберіть Тип Прибирання</label>
-            </div>
-            <button type="submit">Оформити Номер</button>
-        </form>
-    </div>
+      <div class="form-floating mb-3 mt-3">
+        <select class="form-select" id="service" name="service">
+          <option>Без Прибирання</option>
+          <option>Легке Прибирання</option>
+          <option>Генеральне Прибирання</option>
+        </select>
+        <label for="service" class="form-label">Виберіть Тип Прибирання</label>
+      </div>
+      <button type="submit" class="btn btn-dark">Оформити Номер</button>
+    </form>
+  </div>
 
 </main>
 

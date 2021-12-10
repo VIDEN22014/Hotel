@@ -54,9 +54,9 @@
                        placeholder="Введіть ціну за день:" class="form-control" required pattern="\d+"><br>
                 <label for="price_per_day">Введіть ціну за день:</label>
             </div>
-            <button type="submit">Додати Номер</button>
-        </form>
-        <br>
+            <button type="submit" class="btn btn-secondary">Додати Номер</button>
+        </form><br>
+
     </div>
 
     <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEdit"
@@ -90,12 +90,12 @@
                        class="form-control" required pattern="\d+"><br>
                 <label for="price_per_day_edit">Введіть ціну за день:</label>
             </div>
-            <button type="submit">Змінити Номер</button>
+            <button type="submit" class="btn btn-secondary">Змінити</button>
         </form>
     </div>
 
 
-    <h1>Список Номерів</h1>
+    <h2>Список Номерів</h2>
     <table class="table table-dark table-hover">
         <thead>
         <tr>
@@ -117,11 +117,11 @@
                     <form action="/admin/rooms" method="get">
                         <input th:type="hidden" name="action" value="edit">
                         <input th:type="hidden" name="id" th:value="${el.id}">
-                        <button type="submit">Змінити</button>
+                        <button type="submit" class="btn btn-dark">Змінити</button>
                     </form>
                     <form action="/admin/rooms/delete" method="post">
                         <input th:type="hidden" name="id" th:value="${el.id}">
-                        <button type="submit">Видалити</button>
+                        <button type="submit" class="btn btn-dark">Видалити</button>
                     </form>
                 </td>
             </tr>
