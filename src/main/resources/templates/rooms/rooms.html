@@ -13,18 +13,119 @@
 
 <main>
     <body>
+    <div class="rd_place">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 g-2">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="card-img-top" src="lux.jpg" alt="Lux" width="100%" height="300">
+                        <div class="card-body">
+                            <h3 style="color: black; text-shadow: 0px 0px">Люкс</h3>
+                            <ul>
+                                <li>просторий балкон з видом на річку або парк</li>
+                                <li>спальна кімната з двоспальним ліжком 180*200 см</li>
+                                <li>гостьова кімната з диваном-трансформером та робочою зоною</li>
+                                <li>ванна кімната з джакузі і біде</li>
+                                <li>супутникове телебачення, клімат-контроль, сейф, фен, Wi-Fi</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <span th:each = "el : ${room_types}" >
+                                        <form action="/rooms/room_order" method="get" th:if="${el=='Люкс'}">
+                                            <input th:type="hidden" name="room_type" th:value="Люкс"><br>
+                                            <button type="submit" class="btn btn-dark">Оформити Номер</button>
+                                        </form>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <div th:each = "el : ${room_types}" class="rd_place">
-        <h3 th:text="${el}"/>
-        <form action="/rooms/room_order" method="get">
-            <input th:type="hidden" name="room_type" th:value="${el}"><br>
-            <button type="submit" class="btn btn-dark">Оформити Номер</button>
-        </form>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="card-img-top" src="delux.jpg" alt="Delux" width="100%" height="300">
+                        <div class="card-body">
+                            <h3 style="color: black; text-shadow: 0px 0px">Делюкс</h3>
+                            <ul>
+                                <li>балкон з видом на річку або парк</li>
+                                <li>двоспальне ліжко 180*200 см. та диван-трансформер</li>
+                                <li>туалетна кімната з душевою кабіною і біде</li>
+                                <li>журнальний столик</li>
+                                <li>супутникове телебачення, клімат-контроль, сейф, фен, Wi-Fi</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <div th:each = "el : ${room_types}" >
+                                        <form action="/rooms/room_order" method="get" th:if="${el=='Делюкс'}">
+                                            <input th:type="hidden" name="room_type" th:value="Делюкс"><br>
+                                            <button type="submit" class="btn btn-dark">Оформити Номер</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="card-img-top" src="standart.jpg" alt="Standart" width="100%" height="300">
+                        <div class="card-body">
+                            <h3 style="color: black; text-shadow: 0px 0px">Стандарт</h3>
+                            <ul>
+                                <li>балкон з видом на річку або парк</li>
+                                <li>одне двуспальне ліжко 160*180 см. або два односпальних 90*180 см</li>
+                                <li>туалетна кімната з душем</li>
+                                <li>диванчик та столик</li>
+                                <li>супутникове телебачення, клімат-контроль, сейф, фен, Wi-Fi</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <div th:each = "el : ${room_types}" >
+                                        <form action="/rooms/room_order" method="get" th:if="${el=='Стандарт'}">
+                                            <input th:type="hidden" name="room_type" th:value="Стандарт"><br>
+                                            <button type="submit" class="btn btn-dark">Оформити Номер</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="card-img-top" src="econom.jpg" alt="Econom" width="100%" height="300">
+                        <div class="card-body">
+                            <h3 style="color: black; text-shadow: 0px 0px">Економ</h3>
+                            <ul>
+                                <li>балкон</li>
+                                <li>одне двуспальне ліжко 160*180 см. або два односпальних 90*180 см</li>
+                                <li>туалетна кімната з душем</li>
+                                <li>робочий стіл</li>
+                                <li>супутникове телебачення, клімат-контроль, сейф, фен, Wi-Fi</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <div th:each = "el : ${room_types}" >
+                                        <form action="/rooms/room_order" method="get" th:if="${el=='Економ'}">
+                                            <input th:type="hidden" name="room_type" th:value="Економ"><br>
+                                            <button type="submit" class="btn btn-dark">Оформити Номер</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
+    
     </body>
 </main>
-
-
 
 </body>
 </html>
