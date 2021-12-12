@@ -36,17 +36,13 @@ public class AdminController {
     public String admin_entryPost(@RequestParam String password, Model model) {
         model.addAttribute("title", "Сторінка Адміністратора");
         if (password.equals("admin")) {
-            return "redirect:/admin";
+            return "redirect:/admin/rooms";
         }
         model.addAttribute("error", 1);
         return "admin/admin_entry";
     }
 
-    @GetMapping("/admin")
-    public String admin(Model model) {
-        model.addAttribute("title", "Сторінка Адміністратора");
-        return "admin/admin";
-    }
+
 
     @GetMapping("/admin/rooms")
     public String adminRooms(@RequestParam(value = "id", required = false) Long id, Model model) {

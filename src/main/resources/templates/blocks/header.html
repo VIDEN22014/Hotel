@@ -1,3 +1,4 @@
+<html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -11,17 +12,19 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/rooms">Rooms</a>
                         </li>
+
+                        <li class="nav-item ">
+                        <a class="nav-link " href="/room_service">
+                            Room service
+                        </a>
+                    </li>
                         <li class="nav-item ">
                             <a class="nav-link " href="/contacts">
                                 Contacts
                             </a>
 
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " href="/room_service">
-                                Room service
-                            </a>
-                        </li>
+
                         <li class="nav-item ">
                             <a class="nav-link " href="/admin_entry">
                                 Admin room
@@ -45,11 +48,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " href="/admin">
-                                Admin Page
-                            </a>
-                        </li>
+
                         <li class="nav-item ">
                             <a class="nav-link " href="/admin/rooms">
                                 Rooms
