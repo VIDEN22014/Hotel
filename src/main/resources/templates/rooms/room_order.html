@@ -35,39 +35,54 @@
     </div>
     <form action="/rooms/room_order" method="post">
       <input th:type="hidden" name="room_type" th:value="${room_type}">
-      <div class="form-floating mb-3 mt-3">
-        <input th:type="text" id="name" name="name" th:value="${name}" placeholder="Введіть Імя" class="form-control"
-               required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
-        <label for="name">Імя</label>
-      </div>
-      <div class="form-floating mb-3 mt-3">
-        <input th:type="text" id="surname" name="surname" th:value="${surname}" placeholder="Введіть Прізвище" class="form-control" 
-               required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
-        <label for="surname">Прізвище</label>
-      </div>
-      <div class="form-floating mb-3 mt-3">
-        <input th:type="text" id="phone_number" name="phone_number" th:value="${phone_number}" placeholder="Введіть Номер Телефону" class="form-control" 
-               required pattern="[+]\d{12}"><br>
-        <label for="phone_number">Номер телефону в форматі +380XXXXXXXXX</label>
-      </div>
-      <div class="form-floating mb-3 mt-3">
-                <input th:type="number" id="number_of_people" name="number_of_people" th:value="${number_of_people}"
-                       placeholder="Кількість людей від 1 до 3"
-                       class="form-control" required min="1" max="3"><br>
-                <label for="number_of_people">Кількість людей від 1 до 3</label>
+        <div class="row">
+            <div class="col">
+              <div class="form-floating mb-3 mt-3">
+                <input th:type="text"  id="name" name="name" th:value="${name}" placeholder="Введіть Імя" class="form-control"
+                       required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
+                <label for="name">Імя</label>
+              </div>
             </div>
+            <div class="col">
+              <div class="form-floating mb-3 mt-3">
+                <input th:type="text"  id="surname" name="surname" th:value="${surname}" placeholder="Введіть Прізвище" class="form-control"
+                       required pattern="[а-яґєіїa-zА-ЯҐЄІЇA-Z']{2,20}"><br>
+                <label for="surname">Прізвище</label>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <div class="form-floating mb-3 mt-3">
+                <input th:type="text" id="phone_number" name="phone_number" th:value="${phone_number}" placeholder="Введіть Номер Телефону" class="form-control"
+                       required pattern="[+]\d{12}"><br>
+                <label for="phone_number">Номер телефону в форматі +380XXXXXXXXX</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-floating mb-3 mt-3">
+                  <input th:type="number" id="number_of_people" name="number_of_people" th:value="${number_of_people}"
+                         placeholder="Кількість людей від 1 до 3"
+                         class="form-control" required min="1" max="3"><br>
+                  <label for="number_of_people">Кількість людей від 1 до 3</label>
+              </div>
+            </div>
+        </div>
             <div class="alert alert-danger" role="alert" th:if="${isDatepickerWrong}">
                 Заданий Проміжок Дат Невірний
             </div>
-            <div class="col-sm-4">
-                <div class="input-group date" id="datepicker1">
-                    <input autocomplete="off" type="text" name="datepicker1" th:value="${datepicker1}"
-                           placeholder="Дата Заселення:" class="form-control" required>
-                    <span class="input-group-append">
-                            <span class="input-group-text bg-white d-block">
-                                <i class="fa fa-calendar"></i>
+        <div class="row">
+            <div class="col">
+                <div class="col-sm-4">
+                    <div class="input-group date" id="datepicker1">
+                        <input autocomplete="off" type="text" name="datepicker1" th:value="${datepicker1}"
+                               placeholder="Дата Заселення:" class="form-control" required>
+                        <span class="input-group-append">
+                                <span class="input-group-text bg-white d-block">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
                             </span>
-                        </span>
+                    </div>
                 </div>
             </div>
             <script th:inline="javascript">
@@ -88,15 +103,17 @@
                     });
                 });
             </script>
-            <div class="col-sm-4">
-                <div class="input-group date" id="datepicker2">
-                    <input autocomplete="off" type="text" name="datepicker2" th:value="${datepicker2}"
-                           placeholder="Дата Виселення:" class="form-control" required>
-                    <span class="input-group-append">
-                            <span class="input-group-text bg-white d-block">
-                                <i class="fa fa-calendar"></i>
+            <div class="col">
+                <div class="col-sm-4">
+                    <div class="input-group date" id="datepicker2">
+                        <input autocomplete="off" type="text" name="datepicker2" th:value="${datepicker2}"
+                               placeholder="Дата Виселення:" class="form-control" required>
+                        <span class="input-group-append">
+                                <span class="input-group-text bg-white d-block">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
                             </span>
-                        </span>
+                    </div>
                 </div>
             </div>
             <script th:inline="javascript">
@@ -118,7 +135,8 @@
                     });
                 });
             </script>
-      <div class="form-floating mb-3 mt-3">
+        </div>
+      <div class="form-floating mb-3 mt-3" >
         <select class="form-select" id="service" name="service">
           <option>Без Прибирання</option>
           <option>Легке Прибирання</option>

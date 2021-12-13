@@ -18,7 +18,7 @@
 
 
     <div class="container mt-5 mb-5">
-        <h1>Зміна Сервіса в Номері</h1>
+        <h1>Зміна Сервісу в Номері</h1>
         <form action="/room_service" method="post">
             <div class="alert alert-danger" role="alert" th:if="${state == 'error'}">
                 Замовлення За Такими Даними Не Існує
@@ -26,13 +26,19 @@
             <div class="alert alert-success" role="alert" th:if="${state == 'success'}">
                 Сервіс Успішно Змінений
             </div>
+            <div class="row">
+                <div class="col">
             <div class="form-floating mb-3 mt-3">
                 <input th:type="text" id="phone_number" name="phone_number" placeholder="Введіть Номер Телефону" class="form-control" required pattern="[+]\d{12}"><br>
                 <label for="phone_number">Номер телефону в форматі +380XXXXXXXXX</label>
             </div>
+                </div>
+                <div class="col">
             <div class="form-floating mb-3 mt-3">
                 <input th:type="number" id="room_number" name="room_number" placeholder="Введіть Номер Кімнати" class="form-control" required pattern="\d+"><br>
                 <label for="room_number">Номер Кімнати</label>
+            </div>
+                </div>
             </div>
             <div class="form-floating mb-3 mt-3">
                 <select class="form-select" id="service" name="service">

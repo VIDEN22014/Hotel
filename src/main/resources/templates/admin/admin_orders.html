@@ -84,15 +84,19 @@
                 <td th:text="${el.check_in_date}"></td>
                 <td th:text="${el.check_out_date}"></td>
                 <td>
-                    <form action="/admin/orders" method="get">
-                        <input th:type="hidden" name="action" value="edit">
-                        <input th:type="hidden" name="id" th:value="${el.id}">
-                        <button type="submit" class="btn btn-dark">Змінити</button>
-                    </form>
-                    <form action="/admin/orders/delete" method="post">
-                        <input th:type="hidden" name="id" th:value="${el.id}">
-                        <button type="submit" class="btn btn-dark">Видалити</button>
-                    </form>
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <form action="/admin/orders" method="get">
+                            <input th:type="hidden" name="action" value="edit">
+                            <input th:type="hidden" name="id" th:value="${el.id}">
+                            <button type="submit" class="btn btn-dark">Змінити</button>
+                        </form>
+                    </div>
+                    <div class="btn-group mr-2" role="group" aria-label="Second group">
+                        <form action="/admin/orders/delete" method="post">
+                            <input th:type="hidden" name="id" th:value="${el.id}">
+                            <button type="submit" class="btn btn-dark">Видалити</button>
+                        </form>
+                    </div>
                 </td>
             </tr>
         </div>
